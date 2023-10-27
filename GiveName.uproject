@@ -1,13 +1,16 @@
 {
 	"FileVersion": 3,
-	"EngineAssociation": "{DB575A15-4236-A6B0-3DE8-1BA109B55D97}",
+	"EngineAssociation": "{CD9E807B-4193-75B7-8AE2-1ABD004C7256}",
 	"Category": "",
 	"Description": "",
 	"Modules": [
 		{
 			"Name": "GiveName",
 			"Type": "Runtime",
-			"LoadingPhase": "Default"
+			"LoadingPhase": "Default",
+			"AdditionalDependencies": [
+				"Engine"
+			]
 		}
 	],
 	"Plugins": [
