@@ -10,7 +10,7 @@ APlayerCharacter::APlayerCharacter()
 	PrimaryActorTick.bCanEverTick = true;
 
 	TArray<UCameraComponent*> children;
-	camera = GetComponents(children);
+	//camera = GetComponents(children);
 
 }
 
