@@ -56,6 +56,9 @@ public:
 	void Look(const FInputActionValue& Value);
 	void Interact(const FInputActionValue& Value);
 
+	UFUNCTION(BlueprintImplementableEvent)
+	void RedVision();
+
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Control|Input Actions") UInputAction* MyAction;
 
 protected:
