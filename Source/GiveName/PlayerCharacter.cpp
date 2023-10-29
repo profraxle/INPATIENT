@@ -120,6 +120,12 @@ void APlayerCharacter::Interact(const FInputActionValue& Value) {
 
 			interact->InteractedWith();
 		}
+
+		if (hitActor->ActorHasTag("Hurt")) {
+
+			RedVision();
+
+		}
 	}
 }
 
