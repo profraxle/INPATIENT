@@ -71,7 +71,7 @@ void ADoor::Tick(float DeltaTime)
 
 }
 
-void ADoor::Open(FVector openedFrom) {
+void ADoor::Open() {
 
 
 	if (!locked) {
