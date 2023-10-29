@@ -110,7 +110,7 @@ void APlayerCharacter::Interact(const FInputActionValue& Value) {
 			ADoor* door = Cast<ADoor>(hitActor);
 
 			door->Open(GetActorLocation());
-			RedVision();
+			FadeToBlack();
 		}
 
 		if (hitActor->ActorHasTag("Interact")) {

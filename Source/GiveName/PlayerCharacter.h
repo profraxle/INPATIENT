@@ -60,6 +60,13 @@ public:
 	UFUNCTION(BlueprintImplementableEvent)
 	void RedVision();
 
+	UFUNCTION(BlueprintImplementableEvent)
+	void FadeToBlack();
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void FadeFromBlack();
+
+
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Control|Input Actions") UInputAction* MyAction;
 
 protected:
