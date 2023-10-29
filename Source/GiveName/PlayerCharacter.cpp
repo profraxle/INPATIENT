@@ -37,6 +37,8 @@ void APlayerCharacter::BeginPlay()
 			Subsystem->AddMappingContext(DefaultMappingContext, 0);
 		}
 	}
+
+	FadeFromBlack();
 }
 
 // Called every frame
@@ -110,7 +112,7 @@ void APlayerCharacter::Interact(const FInputActionValue& Value) {
 			ADoor* door = Cast<ADoor>(hitActor);
 
 			door->Open(GetActorLocation());
-			FadeToBlack();
+			
 		}
 
 		if (hitActor->ActorHasTag("Interact")) {
