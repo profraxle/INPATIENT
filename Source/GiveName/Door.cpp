@@ -75,16 +75,42 @@ void ADoor::Open(FVector openedFrom) {
 
 
 	if (!locked) {
-		animating = true;
 
 
-		if (!isOpen) {
-			targAngle = 270;
-			isOpen = true;
+		FVector DirVec = openedFrom - GetActorLocation();
+		DirVec.Normalize();
+
+		float check = FVector::DotProduct(GetActorForwardVector(), DirVec);
+		
+	if (check > 0) {
+
+
+			animating = true;
+
+
+
+			if (!isOpen) {
+				targAngle = 270;
+				isOpen = true;
+			}
+			else {
+				targAngle = 0;
+				isOpen = false;
+			}
 		}
 		else {
-			targAngle = 0;
-			isOpen = false;
+			animating = true;
+
+
+
+			if (!isOpen) {
+				targAngle = 90;
+				isOpen = true;
+			}
+			else {
+				targAngle = 0;
+				isOpen = false;
+			}
 		}
 	}
 	else {
