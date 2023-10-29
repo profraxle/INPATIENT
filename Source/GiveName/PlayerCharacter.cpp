@@ -111,6 +111,12 @@ void APlayerCharacter::Interact(const FInputActionValue& Value) {
 
 			door->Open(GetActorLocation());
 		}
+
+		if (hitActor->ActorHasTag("Interact")) {
+			AInteractActor* interact = Cast<AInteractActor>(hitActor);
+
+			interact->InteractedWith();
+		}
 	}
 }
 
