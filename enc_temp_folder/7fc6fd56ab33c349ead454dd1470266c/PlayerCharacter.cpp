@@ -109,7 +109,7 @@ void APlayerCharacter::Interact(const FInputActionValue& Value) {
 		if (hitActor->ActorHasTag("Door")) {
 			ADoor* door = Cast<ADoor>(hitActor);
 
-			door->Open(GetActorLocation());
+			door->Open();
 		}
 	}
 }
