@@ -7,6 +7,8 @@
 #include "InputActionValue.h"
 #include "InputAction.h"
 #include "Camera/CameraComponent.h"
+#include "Kismet/GameplayStatics.h"
+#include "Door.h"
 #include "PlayerCharacter.generated.h"
 
 class UCameraComponent;
@@ -40,6 +42,9 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	class UInputAction* LookAction;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	class UInputAction* InteractAction;
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -49,6 +54,7 @@ public:
 
 	void Move(const FInputActionValue& Value);
 	void Look(const FInputActionValue& Value);
+	void Interact(const FInputActionValue& Value);
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Control|Input Actions") UInputAction* MyAction;
 

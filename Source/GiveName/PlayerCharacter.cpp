@@ -60,6 +60,9 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 
 		//Looking
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &APlayerCharacter::Look);
+
+		//Interaction
+		EnhancedInputComponent->BindAction(InteractAction, ETriggerEvent::Started, this, &APlayerCharacter::Interact);
 	}
 
 }
@@ -87,6 +90,27 @@ void APlayerCharacter::Look(const FInputActionValue& Value)
 		// add yaw and pitch input to controller
 		AddControllerYawInput(LookAxisVector.X);
 		AddControllerPitchInput(LookAxisVector.Y);
+	}
+}
+
+void APlayerCharacter::Interact(const FInputActionValue& Value) {
+
+	APlayerCameraManager* OurCamera = UGameplayStatics::GetPlayerCameraManager(this, 0);
+
+	FCollisionQueryParams parameters;
+
+	FHitResult OutHit;
+
+	GetWorld()->LineTraceSingleByChannel(OutHit, OurCamera->GetCameraLocation(), OurCamera->GetCameraLocation() + OurCamera->GetActorForwardVector() * 300, ECC_Visibility, parameters);
+
+	AActor * hitActor = OutHit.GetActor();
+
+	if (hitActor) {
+		if (hitActor->ActorHasTag("Door")) {
+			ADoor* door = Cast<ADoor>(hitActor);
+
+			door->Open();
+		}
 	}
 }
 
