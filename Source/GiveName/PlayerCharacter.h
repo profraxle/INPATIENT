@@ -9,6 +9,7 @@
 #include "Camera/CameraComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "Door.h"
+#include "InteractActor.h"
 #include "PlayerCharacter.generated.h"
 
 class UCameraComponent;

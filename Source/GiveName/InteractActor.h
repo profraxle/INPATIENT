@@ -4,31 +4,27 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "Door.generated.h"
+#include "InteractActor.generated.h"
 
 UCLASS()
-class GIVENAME_API ADoor : public AActor
+class GIVENAME_API AInteractActor : public AActor
 {
 	GENERATED_BODY()
 	
 public:	
 	// Sets default values for this actor's properties
-	ADoor();
+	AInteractActor();
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-	bool isOpen;
-	float targAngle;
-	float firstAngle;
-	bool animating;
-	int openSpeed;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	bool locked;
+
 
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-	void Open();
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void InteractedWith();
 };

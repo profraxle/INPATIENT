@@ -112,6 +112,12 @@ void APlayerCharacter::Interact(const FInputActionValue& Value) {
 			door->Open(GetActorLocation());
 			RedVision();
 		}
+
+		if (hitActor->ActorHasTag("Interact")) {
+			AInteractActor* interact = Cast<AInteractActor>(hitActor);
+
+			interact->InteractedWith();
+		}
 	}
 }
 
