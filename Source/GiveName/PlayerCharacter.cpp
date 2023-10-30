@@ -49,7 +49,7 @@ void APlayerCharacter::BeginPlay()
 
 	dVolume = instance->SoundVolume;
 
-	humming = UGameplayStatics::CreateSound2D(this,sound,0.2*dVolume,1,0);
+	humming = UGameplayStatics::CreateSound2D(this,sound,0.4*dVolume,1,0);
 	humming->Play();
 	FadeFromBlack();
 }
