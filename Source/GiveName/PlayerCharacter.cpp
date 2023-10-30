@@ -5,12 +5,16 @@
 #include "Components/CapsuleComponent.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
+#include "Components/AudioComponent.h"
 
 // Sets default values
 APlayerCharacter::APlayerCharacter()
 {
+
+	
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	//PrimaryActorTick.bCanEverTick = true;
+	PrimaryActorTick.bCanEverTick = true;
+	PrimaryActorTick.bStartWithTickEnabled = true;
 
 	// Set size for collision capsule
 	GetCapsuleComponent()->InitCapsuleSize(55.f, 96.0f);
@@ -37,7 +41,16 @@ void APlayerCharacter::BeginPlay()
 			Subsystem->AddMappingContext(DefaultMappingContext, 0);
 		}
 	}
+	
+	
+	
 
+	instance = Cast<UBaseInstance>(GetGameInstance());
+
+	dVolume = instance->SoundVolume;
+
+	humming = UGameplayStatics::CreateSound2D(this,sound,0.2*dVolume,1,0);
+	humming->Play();
 	FadeFromBlack();
 }
 
@@ -45,6 +58,12 @@ void APlayerCharacter::BeginPlay()
 void APlayerCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	if (dVolume != instance->SoundVolume)
+	{
+		dVolume = instance->SoundVolume;
+		humming->SetVolumeMultiplier(0.4* instance->SoundVolume);
+	}
 
 }
 

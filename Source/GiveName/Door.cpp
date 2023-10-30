@@ -11,7 +11,7 @@ ADoor::ADoor()
 	Tags.Add(FName("Door"));
 
 	locked = false;
-
+	
 }
 
 // Called when the game starts or when spawned
@@ -23,6 +23,9 @@ void ADoor::BeginPlay()
 	animating = false;
 	firstAngle = GetActorRotation().Quaternion().Euler().Z;
 	openSpeed = 3;
+
+	instance = Cast<UBaseInstance>(GetGameInstance());
+
 }
 
 // Called every frame
@@ -75,14 +78,15 @@ void ADoor::Open(FVector openedFrom) {
 
 
 	if (!locked) {
-
+		
+		UGameplayStatics::PlaySound2D(this, sound,instance->SoundVolume,1,0);
 
 		FVector DirVec = openedFrom - GetActorLocation();
 		DirVec.Normalize();
 
 		float check = FVector::DotProduct(GetActorForwardVector(), DirVec);
 		
-	if (check > 0) {
+		if (check > 0) {
 
 
 			animating = true;
@@ -112,8 +116,9 @@ void ADoor::Open(FVector openedFrom) {
 				isOpen = false;
 			}
 		}
+	}else
+	{
+		UGameplayStatics::PlaySound2D(this,lockedNoise,instance->SoundVolume,1,0);
 	}
-	else {
-		//add the code for a unsuccessful door opening sound
-	}
+	
 }
