@@ -65,6 +65,10 @@ void APlayerCharacter::Tick(float DeltaTime)
 		humming->SetVolumeMultiplier(0.4* instance->SoundVolume);
 	}
 
+	if (fadeTrigger) {
+		FadeToBlack();
+	}
+
 }
 
 // Called to bind functionality to input
