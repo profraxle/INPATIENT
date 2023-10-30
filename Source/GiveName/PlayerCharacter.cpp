@@ -42,9 +42,6 @@ void APlayerCharacter::BeginPlay()
 		}
 	}
 	
-	
-	
-
 	instance = Cast<UBaseInstance>(GetGameInstance());
 
 	dVolume = instance->SoundVolume;

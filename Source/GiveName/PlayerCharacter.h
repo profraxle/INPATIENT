@@ -75,6 +75,9 @@ public:
 	UPROPERTY(EditAnywhere,BlueprintReadWrite);
 	UAudioComponent  * humming;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite);
+	int day;
+
 protected:
 	//UCameraComponent* camera;
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
