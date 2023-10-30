@@ -67,6 +67,8 @@ public:
 	UFUNCTION(BlueprintImplementableEvent)
 	void FadeFromBlack();
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite);
+	bool fadeTrigger;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Control|Input Actions") UInputAction* MyAction;
 
