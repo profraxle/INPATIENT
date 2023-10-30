@@ -100,8 +100,8 @@ void APlayerCharacter::Move(const FInputActionValue& Value)
 	if (Controller != nullptr)
 	{
 		// add movement 
-		AddMovementInput(GetActorForwardVector(), MovementVector.Y);
-		AddMovementInput(GetActorRightVector(), MovementVector.X);
+		AddMovementInput(GetActorForwardVector(), MovementVector.Y * 0.5f);
+		AddMovementInput(GetActorRightVector(), MovementVector.X * 0.5f);
 	}
 }
 
