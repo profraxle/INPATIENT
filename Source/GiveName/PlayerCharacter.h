@@ -7,6 +7,7 @@
 #include "InputActionValue.h"
 #include "InputAction.h"
 #include "Camera/CameraComponent.h"
+#include "BaseInstance.h"
 #include "Kismet/GameplayStatics.h"
 #include "Door.h"
 #include "InteractActor.h"
@@ -69,7 +70,17 @@ public:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Control|Input Actions") UInputAction* MyAction;
 
+	UPROPERTY(EditAnywhere,BlueprintReadWrite);
+	UAudioComponent  * humming;
+
 protected:
 	//UCameraComponent* camera;
+	UPROPERTY(EditAnywhere,BlueprintReadWrite)
+	USoundBase * sound;
+	
+	float dVolume;
+
+	UBaseInstance* instance;
+	
 
 };

@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "BaseInstance.h"
+#include "Kismet/GameplayStatics.h"
 #include "Door.generated.h"
 
 UCLASS()
@@ -24,9 +26,17 @@ protected:
 	bool animating;
 	int openSpeed;
 
+	UPROPERTY(EditAnywhere,BlueprintReadWrite);
+	USoundBase * sound;
+
+	UPROPERTY(EditAnywhere,BlueprintReadWrite);
+	USoundBase * lockedNoise;
+	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	bool locked;
 
+
+	UBaseInstance* instance;
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
