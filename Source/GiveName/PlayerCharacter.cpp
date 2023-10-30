@@ -47,6 +47,7 @@ void APlayerCharacter::BeginPlay()
 	dVolume = instance->SoundVolume;
 
 	humming = UGameplayStatics::CreateSound2D(this,sound,0.4*dVolume,1,0);
+	creepy = UGameplayStatics::CreateSound2D(this, creepSound, 0.05 * dVolume, 1, 0);
 	humming->Play();
 	FadeFromBlack();
 }
@@ -55,11 +56,26 @@ void APlayerCharacter::BeginPlay()
 void APlayerCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+	if (day >= 4 && day !=7) {
+		if (!creepy->IsPlaying()) {
+			creepy->Play();
+			creepy->SetVolumeMultiplier(0.05 * instance->SoundVolume * day);
+		}
+	}
+	if (day == 7) {
+
+		if (humming->IsPlaying()) {
+			humming->Stop();
+		}
+		
+		
+	}
 
 	if (dVolume != instance->SoundVolume)
 	{
 		dVolume = instance->SoundVolume;
 		humming->SetVolumeMultiplier(0.4* instance->SoundVolume);
+		creepy->SetVolumeMultiplier(0.05 * instance->SoundVolume * day);
 	}
 
 	if (fadeTrigger) {

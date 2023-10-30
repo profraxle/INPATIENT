@@ -76,12 +76,19 @@ public:
 	UAudioComponent  * humming;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite);
+	UAudioComponent* creepy;
+
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite);
 	int day;
 
 protected:
 	//UCameraComponent* camera;
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
 	USoundBase * sound;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	USoundBase* creepSound;
 	
 	float dVolume;
 
