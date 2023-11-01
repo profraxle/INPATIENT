@@ -57,17 +57,20 @@ void APlayerCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	if (day >= 4 && day !=7) {
-		if (!creepy->IsPlaying()) {
-			creepy->Play();
-			creepy->SetVolumeMultiplier(0.05 * instance->SoundVolume * day);
+		if (creepy) {
+			if (!creepy->IsPlaying()) {
+				creepy->Play();
+				creepy->SetVolumeMultiplier(0.05 * instance->SoundVolume * day);
+			}
 		}
 	}
 	if (day == 7) {
 
-		if (humming->IsPlaying()) {
-			humming->Stop();
+		if (humming) {
+			if (humming->IsPlaying()) {
+				humming->Stop();
+			}
 		}
-		
 		
 	}
 
